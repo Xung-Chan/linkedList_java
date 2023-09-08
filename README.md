@@ -1,2 +1,0 @@
-# linkedList_jav
-xyz
