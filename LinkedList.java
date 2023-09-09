@@ -31,7 +31,7 @@ class LinkedList<T> implements ListInterface<T> {
         }
         return false;
     }
-    public C removeItem(T item) throws NoSuchElementException{
+    public T removeItem(T item) throws NoSuchElementException{
         if(head==null)
             throw new NoSuchElementException("Empty");
         else{
