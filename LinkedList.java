@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 class LinkedList<T> implements ListInterface<T> {
     private Node<T> head=null;
     private int size=0;
@@ -29,6 +31,28 @@ class LinkedList<T> implements ListInterface<T> {
         }
         return false;
     }
+    public T removeItem(T item) throws NoSuchElementException{
+        if(head==null)
+            throw new NoSuchElementException("Empty");
+        else{
+            Node<T> current=head;
+            if(current.getValue().equals(item)){
+                head=head.getNext();
+                size--;
+                return item;
+            }
+            Node<T> prev=current;
+            while((current=current.getNext())!=null){
+                if(current.getValue().equals(item)){
+                    prev.setNext(current.getNext());
+                    size--;
+                    return item;
+                }
+                prev=current;
+            }
+            throw new NoSuchElementException("Not Found");
+        }   
+    }   
     @Override
     public T removeFirst() throws IndexOutOfBoundsException{
         if(size==0)
